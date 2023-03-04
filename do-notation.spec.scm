@@ -51,6 +51,15 @@
       (not (boolean? z))
       y)))
 
+(assert-with eq? 42070
+  (parameterize ([flat-map thruthy-flat-map])
+    (do-notation
+      (<- x 42068)
+      (let* [y (add1 x)]
+            [z (add1 y)])
+      (even? z)
+      z)))
+
 (define t1 (current-time))
 
 (display "All tests passed!\n")

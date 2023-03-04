@@ -7,11 +7,13 @@
   (define flat-map (make-parameter (lambda (f x) (f x))))
 
   (define-syntax do-notation
-    (syntax-rules (<- let)
+    (syntax-rules (<- let let*)
       [(_ x) x]
       [(_ (<- x e) e* ...)
         ((flat-map) (lambda (x) (do-notation e* ...)) e)]
       [(_ (let bindings ...) e* ...)
         (let (bindings ...) (do-notation e* ...))]
+      [(_ (let* bindings ...) e* ...)
+        (let* (bindings ...) (do-notation e* ...))]
       [(_ e e* ...)
         ((flat-map) (lambda (x) (do-notation e* ...)) e)])))
