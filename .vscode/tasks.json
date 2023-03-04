@@ -1,0 +1,15 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run test suite",
+      "command": "scheme --script ./do-notation.spec.scm",
+      "type": "shell",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always"
+      },
+      "group": "test"
+    }
+  ]
+}
