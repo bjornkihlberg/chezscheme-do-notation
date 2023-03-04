@@ -11,5 +11,7 @@
       [(_ x) x]
       [(_ (<- x e) e* ...)
         ((flat-map) (lambda (x) (do-notation e* ...)) e)]
+      [(_ (let bindings ...) e* ...)
+        (let (bindings ...) (do-notation e* ...))]
       [(_ e e* ...)
         ((flat-map) (lambda (x) (do-notation e* ...)) e)])))

@@ -42,6 +42,15 @@
       54
       x)))
 
+(assert-with eq? #f
+  (parameterize ([flat-map thruthy-flat-map])
+    (do-notation
+      (<- x 42068)
+      (let [y (add1 x)]
+           [z (odd? x)])
+      z
+      y)))
+
 (define t1 (current-time))
 
 (display "All tests passed!\n")
