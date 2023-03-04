@@ -1,2 +1,7 @@
 # chezscheme-do-notation
-do notation for Chez Scheme
+
+`do` notation library for Chez Scheme
+
+---
+
+🚧 Currently under construction. 🚧 👨‍🔧 🏗
