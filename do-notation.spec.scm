@@ -85,6 +85,13 @@
       (if (positive? x) (loop (sub1 x)) x)
       x)))
 
+(assert-with eq? 17
+  (parameterize ([flat-map thruthy-flat-map])
+    (do-notation
+      (<- a 13)
+      (define (f x) (+ a x))
+      (f 4))))
+
 (define t1 (current-time))
 
 (display "All tests passed!\n")
