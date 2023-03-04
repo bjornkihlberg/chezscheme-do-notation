@@ -17,6 +17,8 @@
 
 (import (do-notation))
 
+(assert-with eq? 1337 (do-notation 1337))
+
 (define t1 (current-time))
 
 (display "All tests passed!\n")
