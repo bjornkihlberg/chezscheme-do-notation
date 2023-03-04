@@ -7,13 +7,22 @@
   (define flat-map (make-parameter (lambda (f x) (f x))))
 
   (define-syntax do-notation
-    (syntax-rules (<- let let*)
+    (syntax-rules (<- let let* letrec letrec* let-values let*-values)
       [(_ x) x]
+
       [(_ (<- x e) e* ...)
         ((flat-map) (lambda (x) (do-notation e* ...)) e)]
+
       [(_ (let bindings ...) e* ...)
         (let (bindings ...) (do-notation e* ...))]
+
       [(_ (let* bindings ...) e* ...)
         (let* (bindings ...) (do-notation e* ...))]
+
+      [(_ (letrec      bindings ...) e* ...) (letrec      (bindings ...) (do-notation e* ...))]
+      [(_ (letrec*     bindings ...) e* ...) (letrec*     (bindings ...) (do-notation e* ...))]
+      [(_ (let-values  bindings ...) e* ...) (let-values  (bindings ...) (do-notation e* ...))]
+      [(_ (let*-values bindings ...) e* ...) (let*-values (bindings ...) (do-notation e* ...))]
+
       [(_ e e* ...)
         ((flat-map) (lambda (x) (do-notation e* ...)) e)])))
