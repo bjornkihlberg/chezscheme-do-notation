@@ -48,7 +48,7 @@
       (<- x 42068)
       (let [y (add1 x)]
            [z (odd? x)])
-      z
+      (not (boolean? z))
       y)))
 
 (define t1 (current-time))

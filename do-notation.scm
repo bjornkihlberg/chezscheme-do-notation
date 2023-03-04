@@ -7,7 +7,7 @@
   (define flat-map (make-parameter (lambda (f x) (f x))))
 
   (define-syntax do-notation
-    (syntax-rules (<-)
+    (syntax-rules (<- let)
       [(_ x) x]
       [(_ (<- x e) e* ...)
         ((flat-map) (lambda (x) (do-notation e* ...)) e)]
