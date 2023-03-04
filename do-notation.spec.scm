@@ -60,6 +60,31 @@
       (even? z)
       z)))
 
+(assert-with eq? 10
+  (parameterize ([flat-map thruthy-flat-map])
+    (do-notation
+      (<- x 10)
+      (let loop [x x])
+      (if (zero? x) (loop (sub1 x)) x)
+      x)))
+
+(assert-with eq? #f
+  (parameterize ([flat-map thruthy-flat-map])
+    (do-notation
+      (<- x 10)
+      (let loop [y x])
+      #f
+      y)))
+
+(assert-with eq? #f
+  (parameterize ([flat-map thruthy-flat-map])
+    (do-notation
+      (<- x 10)
+      (let loop [x x])
+      (not (= x 5))
+      (if (positive? x) (loop (sub1 x)) x)
+      x)))
+
 (define t1 (current-time))
 
 (display "All tests passed!\n")

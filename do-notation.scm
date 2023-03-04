@@ -13,8 +13,11 @@
       [(_ (<- x e) e* ...)
         ((flat-map) (lambda (x) (do-notation e* ...)) e)]
 
-      [(_ (let bindings ...) e* ...)
-        (let (bindings ...) (do-notation e* ...))]
+      [(_ (let [binding value] ...) e* ...)
+        (let ([binding value] ...) (do-notation e* ...))]
+
+      [(_ (let name bindings ...) e* ...)
+        (let name (bindings ...) (do-notation e* ...))]
 
       [(_ (let* bindings ...) e* ...)
         (let* (bindings ...) (do-notation e* ...))]
