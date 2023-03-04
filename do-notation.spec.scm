@@ -19,6 +19,15 @@
 
 (assert-with eq? 1337 (do-notation 1337))
 
+(define (thruthy-flat-map f x) (and x (f x)))
+
+(assert-with eq? #f
+  (parameterize ([flat-map thruthy-flat-map])
+    (do-notation
+      (<- x #f)
+      (<- y 2)
+      (+ x y))))
+
 (define t1 (current-time))
 
 (display "All tests passed!\n")
