@@ -28,6 +28,20 @@
       (<- y 2)
       (+ x y))))
 
+(assert-with eq? #f
+  (parameterize ([flat-map thruthy-flat-map])
+    (do-notation
+      (<- x 'hey)
+      #f
+      x)))
+
+(assert-with eq? 'yo
+  (parameterize ([flat-map thruthy-flat-map])
+    (do-notation
+      (<- x 'yo)
+      54
+      x)))
+
 (define t1 (current-time))
 
 (display "All tests passed!\n")

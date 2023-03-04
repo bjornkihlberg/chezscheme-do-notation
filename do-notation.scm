@@ -10,4 +10,6 @@
     (syntax-rules (<-)
       [(_ x) x]
       [(_ (<- x e) e* ...)
+        ((flat-map) (lambda (x) (do-notation e* ...)) e)]
+      [(_ e e* ...)
         ((flat-map) (lambda (x) (do-notation e* ...)) e)])))
